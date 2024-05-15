@@ -21,11 +21,6 @@ COLOR = "cyan"
 FOCUS_COLOR = "red"
 LOCAL_HOST = 'liestal'
 
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-if socket.gethostname().lower() == LOCAL_HOST:
-    openai.api_key = os.environ['OPENAI_API_KEY']
-else:
-    openai.api_key = st.secrets['OPENAI_API_KEY']
 @dataclass
 class Message:
     """A class that represents a message in a ChatGPT conversation.
@@ -340,7 +335,7 @@ def main():
     mindmap = MindMap.load()
 
     st.sidebar.title("AI Mind Map Generator")
-
+    API_KEY = st.text_input("Enter your API key", type="password")
     # graph_type = st.sidebar.radio("Type of graph", options=["agraph", "networkx", "graphviz"])
     graph_type = st.sidebar.radio("Type of graph", options=["agraph", "networkx"])
     
