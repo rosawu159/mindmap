@@ -330,13 +330,10 @@ class MindMap:
             self._add_expand_delete_buttons(node)
 
 def main():
-    # will initialize the graph from session state
-    # (if it exists) otherwise will create a new one
     mindmap = MindMap.load()
 
     st.sidebar.title("AI Mind Map Generator")
-    API_KEY = st.text_input("Enter your API key", type="password")
-    # graph_type = st.sidebar.radio("Type of graph", options=["agraph", "networkx", "graphviz"])
+    API_KEY = st.sidebar.text_input("Enter your API key", type="password")
     graph_type = st.sidebar.radio("Type of graph", options=["agraph", "networkx"])
     
     empty = mindmap.is_empty()
