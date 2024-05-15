@@ -20,6 +20,8 @@ st.set_page_config(page_title="AI Mind Maps", layout="wide")
 COLOR = "cyan"
 FOCUS_COLOR = "red"
 LOCAL_HOST = 'liestal'
+networkx_COLOR = "#FFFFBB"
+networkx_FOCUS_COLOR = "#FF8888"
 
 @dataclass
 class Message:
@@ -309,7 +311,7 @@ class MindMap:
             graph = nx.Graph()
             for a, b in self.edges:
                 graph.add_edge(a, b)
-            colors = [FOCUS_COLOR if node == selected else COLOR for node in graph]
+            colors = [networkx_FOCUS_COLOR if node == selected else networkx_COLOR for node in graph]
             fig, _ = plt.subplots(figsize=(16, 16))
             pos = nx.spring_layout(graph, seed = 123)
             nx.draw(graph, pos=pos, node_color=colors, with_labels=True)
